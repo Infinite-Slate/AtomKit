@@ -114,9 +114,20 @@ scene.addBall(emoji: "🍎", color: .systemRed, radius: 30, at: CGPoint(x: 200, 
 // │             │ Food:   "🍕" "🍎" "🍩" "🧁" "🍉"                   │
 // │             │ Fun:    "🎮" "🎯" "🎨" "💎" "🔥"                   │
 // ├─────────────┼───────────────────────────────────────────────────────┤
-// │ color       │ .systemRed     .systemOrange   .systemYellow         │
+// │ color       │ System colors:                                       │
+// │             │ .systemRed     .systemOrange   .systemYellow         │
 // │             │ .systemGreen   .systemBlue     .systemPurple         │
 // │             │ .systemPink    .systemTeal     .systemIndigo          │
+// │             │                                                       │
+// │             │ Or use a hex code for ANY color you want:             │
+// │             │ UIColor(hex: "FF1D55")  — vibrant red                 │
+// │             │ UIColor(hex: "A855F7")  — bright purple              │
+// │             │ UIColor(hex: "38A9EB")  — sky blue                   │
+// │             │ UIColor(hex: "34D399")  — emerald green              │
+// │             │ UIColor(hex: "FBBF24")  — golden yellow              │
+// │             │ UIColor(hex: "2DD4BF")  — turquoise                  │
+// │             │                                                       │
+// │             │ Find any hex color at htmlcolorcodes.com              │
 // ├─────────────┼───────────────────────────────────────────────────────┤
 // │ radius      │ 15 = tiny    25 = small    35 = medium    45 = big   │
 // │             │ (diameter = radius × 2, so radius 25 → 50pt ball)    │

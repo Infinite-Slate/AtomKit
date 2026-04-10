@@ -7,8 +7,8 @@
  Now we're going to give them **physics**. That means gravity pulls them down,
  they bounce off walls and each other, and heavier things push lighter things.
 
- This is the same technology used in games — and in the **WiggleRoom** app,
- where colorful balls float and bounce inside glass cups.
+ This is the same technology used in real mobile games —
+ physics engines that make objects move, fall, and collide realistically.
 
  SpriteKit runs the physics simulation **60 times per second**.
  Every 1/60th of a second, it calculates where each ball should be,
@@ -181,6 +181,24 @@ scene.addBall(
 //            Copy one of the blocks above, paste it here, and change everything.
 //            What happens if you make a TINY ball (radius: 10) with bounciness 1.0?
 //            What about a HUGE ball (radius: 50) with bounciness 0.0?
+//
+// You can also use hex colors instead of system colors!
+// Hex codes are the same ones used in web design and Figma:
+//
+// scene.addBall(
+//     emoji: "🔥",
+//     color: UIColor(hex: "FF1D55"),   // vibrant red
+//     radius: 30,
+//     at: CGPoint(x: 250, y: 500),
+//     bounciness: 0.7
+// )
+//
+// Some cool hex colors to try:
+//   "FF1D55" — vibrant red             "A855F7" — bright purple
+//   "38A9EB" — sky blue               "34D399" — emerald green
+//   "FBBF24" — golden yellow          "2DD4BF" — turquoise
+//   "FF6B6B" — coral                   "4ECDC4" — mint
+//   "FFE66D" — sunny yellow            "95E1D3" — soft green
 
 
 

@@ -7,7 +7,7 @@
  We'll use a framework called **SpriteKit**.
  A framework is a big collection of tools built by Apple.
  SpriteKit is specifically for 2D graphics — shapes, images, animations, games.
- The bouncy balls in WiggleRoom? That's SpriteKit.
+ Real mobile games use SpriteKit for their graphics and animations.
 
  **New concept: the coordinate system**
 
@@ -118,6 +118,17 @@ scene.addChild(circle)
 // ✏️ TASK 1: Change the fillColor to a different color from the list above.
 //            Then change the position — move it around the screen!
 //            Remember: x goes 0 → 400, y goes 0 → 600.
+//
+// Want a CUSTOM color? You can use hex codes — the same format
+// used in web design and apps like Figma:
+//
+//   circle.fillColor = UIColor(hex: "FF1D55")   // vibrant red
+//   circle.fillColor = UIColor(hex: "38A9EB")   // sky blue
+//
+// A hex code is 6 characters (letters and numbers) that encode
+// Red, Green, Blue. "FF" = maximum (255), "00" = zero.
+// So "FF0000" = full red, no green, no blue = pure red.
+// You can find hex codes for any color at htmlcolorcodes.com
 
 // ============================================================================
 // MARK: - Drawing a Rectangle

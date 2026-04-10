@@ -2,7 +2,7 @@
 
 An Xcode Playground for learning Swift and GitHub basics.
 
-Built on the ball physics from the **WiggleRoom** app — create colorful balls that fall and bounce!
+Create colorful balls that fall, bounce, and collide — learn Swift through play!
 
 ---
 

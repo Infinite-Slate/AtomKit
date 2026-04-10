@@ -2,6 +2,72 @@ import SpriteKit
 import PlaygroundSupport
 
 // ============================================================================
+// MARK: - UIColor + Hex
+// ============================================================================
+//
+//  This extension lets you create colors from hex codes — the same format
+//  used in web design, Figma, and professional iOS apps.
+//
+//  A hex color is a 6-character code that encodes Red, Green, and Blue:
+//    "FF0000" = pure red    (FF = 255 red, 00 = 0 green, 00 = 0 blue)
+//    "00FF00" = pure green
+//    "0000FF" = pure blue
+//    "FFFFFF" = white (all maxed out)
+//    "000000" = black (all zero)
+//
+//  Each pair of characters is a number from 00 (0) to FF (255)
+//  in hexadecimal — a base-16 number system used in computing.
+//
+//  Usage:
+//    UIColor(hex: "FF1D55")       — vibrant red
+//    UIColor(hex: "#38A9EB")      — works with or without the # sign
+//    UIColor(hex: "34D399", alpha: 0.5)  — 50% transparent green
+
+public extension UIColor {
+
+    /// Creates a color from a hex string like "FF1D55" or "#A855F7".
+    ///
+    /// - Parameters:
+    ///   - hex: A 6-character hex color code. The "#" prefix is optional.
+    ///   - alpha: Opacity from 0.0 (invisible) to 1.0 (fully visible). Default is 1.0.
+    convenience init(hex: String, alpha: CGFloat = 1.0) {
+        // Remove the "#" if someone includes it
+        let clean = hex.hasPrefix("#") ? String(hex.dropFirst()) : hex
+
+        // Parse the hex string into a single number
+        var rgb: UInt64 = 0
+        Scanner(string: clean).scanHexInt64(&rgb)
+
+        // Extract red, green, blue by shifting bits:
+        //   0xFF1D55 >> 16 = 0xFF = 255 → red
+        //   0xFF1D55 >> 8  & 0xFF = 0x1D = 29 → green
+        //   0xFF1D55       & 0xFF = 0x55 = 85 → blue
+        // Then divide by 255 to get a 0.0–1.0 range.
+        let r = CGFloat((rgb >> 16) & 0xFF) / 255.0
+        let g = CGFloat((rgb >> 8) & 0xFF) / 255.0
+        let b = CGFloat(rgb & 0xFF) / 255.0
+
+        self.init(red: r, green: g, blue: b, alpha: alpha)
+    }
+}
+
+// Some nice hex colors to try:
+//
+//   Color        │ Hex code
+//   ─────────────┼─────────
+//   Red          │ FF1D55
+//   Purple       │ A855F7
+//   Blue         │ 38A9EB
+//   Green        │ 34D399
+//   Turquoise    │ 2DD4BF
+//   Yellow       │ FBBF24
+//   Silver       │ 9CA3AF
+//   Coral        │ FF6B6B
+//   Mint         │ 4ECDC4
+//
+// Try them!  UIColor(hex: "FF1D55")  gives you a vibrant red.
+
+// ============================================================================
 //  BallScene.swift — The engine behind the bouncy balls
 // ============================================================================
 //
@@ -14,9 +80,8 @@ import PlaygroundSupport
 //  The Playground pages use this code through the addBall() function
 //  and the showScene() helper.
 //
-//  The physics settings in this file are based on the real WiggleRoom app —
-//  an iOS time management app where colorful balls bounce around inside
-//  glass cups using SpriteKit physics.
+//  The physics settings in this file are inspired by a real iOS app
+//  that uses SpriteKit to simulate bouncy balls with realistic physics.
 // ============================================================================
 
 // MARK: - BallPlayground
