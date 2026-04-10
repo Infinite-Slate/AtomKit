@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' buildActiveScheme='true' importAppTypes='true'>
+    <pages>
+        <page name='1 - Hello World'/>
+        <page name='2 - Colors and Shapes'/>
+        <page name='3 - Ball Physics'/>
+        <page name='4 - Your Challenge'/>
+    </pages>
+</playground>
