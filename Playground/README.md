@@ -1,96 +1,34 @@
-# CodingIntro — Your First Step Into Programming!
+# Learning Playground
 
-An Xcode Playground for learning Swift and GitHub basics.
+An Xcode Playground that teaches you Swift step by step — from your first line of code to real physics simulations.
 
-Create colorful balls that fall, bounce, and collide — learn Swift through play!
+## What You Need
 
----
+- A Mac with [Xcode](https://apps.apple.com/app/xcode/id497799835) (free from the App Store)
 
-## Requirements
+## How to Open
 
-- Mac with [Xcode](https://apps.apple.com/app/xcode/id497799835) (free from the App Store)
-- A [GitHub](https://github.com) account
-
----
-
-## Getting Started
-
-### 1. Fork this repository
-
-Click the **Fork** button at the top of this repository page on GitHub.
-
-### 2. Clone to your computer
-
-Open **Terminal** and run:
+If you already cloned the AtomKit repo:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/CodingIntro.git
-cd CodingIntro
+open Playground/CodingIntro.playground
 ```
 
-### 3. Open the Playground
+Or find `Playground/CodingIntro.playground` in Finder and double-click it.
 
-```bash
-open CodingIntro.playground
-```
+## Pages
 
-Or double-click `CodingIntro.playground` in Finder.
+Go through them in order — each one builds on the previous:
 
-### 4. Go through the pages in order
+| Page | What You'll Learn |
+|------|-------------------|
+| **1 — Hello World** | Variables, data types, arrays, functions, if/else |
+| **2 — Colors and Shapes** | SpriteKit scenes, drawing circles and rectangles, colors, coordinates |
+| **3 — Ball Physics** | Gravity, bounciness, mass, for loops, physics simulation |
+| **4 — Your Challenge** | Add your own ball to the scene |
 
-| Page | Topic |
-|------|-------|
-| **1 — Hello World** | Variables, data types, functions |
-| **2 — Colors and Shapes** | SpriteKit, shapes, colors |
-| **3 — Ball Physics** | Gravity, bounciness, mass |
-| **4 — Your Challenge** | Add your ball and create a PR! |
+Press **Cmd + Shift + Enter** to run a page after making changes.
 
----
+## What's Next?
 
-## How to Create a Pull Request
-
-After you've added your ball on page 4:
-
-### 1. Save your changes
-
-```bash
-git add .
-git commit -m "Add ball from [Your Name]"
-```
-
-### 2. Push to GitHub
-
-```bash
-git push origin main
-```
-
-### 3. Create a Pull Request
-
-- Go to your fork on GitHub
-- Click **"Contribute"** → **"Open pull request"**
-- Write a short description and click **"Create pull request"**
-
-Congratulations — you've made your first contribution to an open source project! 🎉
-
----
-
-## Project Structure
-
-```
-CodingIntro/
-├── README.md                          ← You are here
-├── CodingIntro.playground/
-│   ├── Sources/
-│   │   └── BallScene.swift            ← Ball scene code
-│   └── Pages/
-│       ├── 1 - Hello World/           ← Variables and functions
-│       ├── 2 - Colors and Shapes/     ← Drawing shapes
-│       ├── 3 - Ball Physics/          ← Physics and gravity
-│       └── 4 - Your Challenge/        ← Add your ball!
-```
-
----
-
-## License
-
-This project is made for educational purposes. Use freely!
+After finishing the playground, you're ready to contribute to the real AtomKit package. See the [Contributing Guide](CONTRIBUTING.md) for how to add your own style preset, color palette, or physics configuration.
