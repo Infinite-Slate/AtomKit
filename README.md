@@ -2,6 +2,37 @@
 
 A Swift package for styling, rendering, and configuring visual atoms with physics — built for real apps and open to contributions.
 
+Includes two interactive learning playgrounds for teaching Swift programming to kids and beginners.
+
+## Learning Playgrounds
+
+New to Swift? Start here. Two ways to learn, same concepts:
+
+| | [iPad App](CodingIntroApp.swiftpm/) | [Xcode Playground](Playground/) |
+|---|---|---|
+| **What you need** | iPad + Swift Playgrounds (free) | Mac + Xcode (free) |
+| **How you learn** | Sliders, buttons, tap to create | Write and edit real Swift code |
+| **Best for** | Younger kids, visual learners, first exposure | Teens, aspiring developers |
+| **Topics** | Variables, shapes, colors, physics, customization | Same + Git, Pull Requests, open-source |
+| **Setup time** | 2 minutes (open file on iPad) | 5 minutes (clone repo, open in Xcode) |
+
+### Quick Start: iPad
+
+1. Download [Swift Playgrounds](https://apps.apple.com/app/swift-playgrounds/id908519492) on your iPad
+2. Get the `CodingIntroApp.swiftpm` folder (from your teacher, AirDrop, or GitHub ZIP)
+3. Open it — tap Play — start learning
+
+### Quick Start: Xcode
+
+```bash
+git clone https://github.com/Infinite-Slate/AtomKit.git
+open AtomKit/Playground/CodingIntro.playground
+```
+
+Press **Cmd + Shift + Enter** to run.
+
+See the detailed setup guides: [iPad README](CodingIntroApp.swiftpm/README.md) | [Xcode README](Playground/README.md)
+
 ## Installation
 
 Add AtomKit as a dependency in your `Package.swift`:
@@ -23,7 +54,7 @@ Then add it to your target:
 )
 ```
 
-Or in Xcode: **File → Add Package Dependencies** → paste the repository URL.
+Or in Xcode: **File > Add Package Dependencies** > paste the repository URL.
 
 ## Usage
 
@@ -65,44 +96,37 @@ if let texture = AtomTextureGenerator.shared.texture(for: custom) {
 }
 ```
 
-## Package Structure
+## Repository Structure
 
 ```
-Sources/AtomKit/
-├── Models/
-│   ├── AtomColor.swift            — 7 predefined colors with hex values
-│   ├── AtomEffect.swift           — glass, gloss, matte, gradient, glow
-│   ├── AtomStyle.swift            — solid or custom styled atoms
-│   ├── EffectLayer.swift          — configurable effect layer with encoding
-│   ├── GlassVariant.swift         — 7 glass visual variants
-│   └── PhysicsConfig.swift        — physics simulation parameters
-├── Extensions/
-│   ├── Color+Hex.swift            — SwiftUI Color from hex
-│   └── UIColor+Hex.swift          — UIColor from hex
-├── Rendering/
-│   ├── AtomTextureGenerator.swift — CGContext rendering → SKTexture
-│   └── StyledAtomView.swift       — SwiftUI preview for any AtomStyle
-└── Presets/                       — contribution zone
-    ├── StylePresets.swift         — named atom styles
-    ├── ColorPalettes.swift        — named color palettes
-    └── PhysicsPresets.swift       — named physics configurations
+AtomKit/
+├── Package.swift                      — library package definition
+├── Sources/AtomKit/
+│   ├── Models/                        — AtomStyle, AtomColor, EffectLayer, etc.
+│   ├── Extensions/                    — Color+Hex, UIColor+Hex
+│   ├── Rendering/                     — StyledAtomView, AtomTextureGenerator
+│   └── Presets/                       — contribution zone (styles, palettes, physics)
+├── Tests/AtomKitTests/                — unit tests
+├── Playground/
+│   └── CodingIntro.playground/        — Xcode Playground (Mac)
+│       ├── Sources/BallScene.swift
+│       └── Pages/ (4 interactive pages)
+└── CodingIntroApp.swiftpm/            — Swift Playgrounds App (iPad + Mac)
+    ├── Package.swift
+    └── Sources/ (SwiftUI app with 4 tabs)
 ```
 
 ## Contributing
 
 We welcome contributions! You can add:
 
-- **A style preset** → edit `Sources/AtomKit/Presets/StylePresets.swift`
-- **A color palette** → edit `Sources/AtomKit/Presets/ColorPalettes.swift`
-- **A physics preset** → edit `Sources/AtomKit/Presets/PhysicsPresets.swift`
+- **A style preset** > edit `Sources/AtomKit/Presets/StylePresets.swift`
+- **A color palette** > edit `Sources/AtomKit/Presets/ColorPalettes.swift`
+- **A physics preset** > edit `Sources/AtomKit/Presets/PhysicsPresets.swift`
 
 Each file has a template at the bottom showing exactly what to add.
 
-See the [step-by-step guide](Playground/CONTRIBUTING.md) for detailed instructions.
-
-### Learning Playground
-
-New to Swift? Check out the [Playground](Playground/) — an Xcode Playground that teaches Swift basics through interactive physics.
+See the [step-by-step Contributing Guide](Playground/CONTRIBUTING.md) for detailed instructions.
 
 ## Requirements
 
