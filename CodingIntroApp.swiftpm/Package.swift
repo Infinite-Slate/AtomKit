@@ -9,7 +9,7 @@ let package = Package(
         .executableTarget(
             name: "CodingIntro",
             path: "Sources",
-            swiftSettings: [.swiftLanguageMode(.v5)]
+            swiftSettings: [.swiftLanguageMode(.v6)]
         )
     ]
 )
