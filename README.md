@@ -1,96 +1,114 @@
-# CodingIntro — Your First Step Into Programming!
+# AtomKit
 
-An Xcode Playground for learning Swift and GitHub basics.
+A Swift package for styling, rendering, and configuring visual atoms with physics — built for real apps and open to contributions.
 
-Create colorful balls that fall, bounce, and collide — learn Swift through play!
+## Installation
 
----
+Add AtomKit as a dependency in your `Package.swift`:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/Infinite-Slate/AtomKit.git", from: "1.0.0")
+]
+```
+
+Then add it to your target:
+
+```swift
+.target(
+    name: "YourApp",
+    dependencies: [
+        .product(name: "AtomKit", package: "AtomKit")
+    ]
+)
+```
+
+Or in Xcode: **File → Add Package Dependencies** → paste the repository URL.
+
+## Usage
+
+```swift
+import AtomKit
+
+// Predefined color
+let style = AtomStyle(atomColor: .blue)
+
+// Custom style with effect layers
+let custom = AtomStyle(hexColor: "FF1D55", layers: [
+    EffectLayer(effect: .glass, variant: 2),
+    EffectLayer(effect: .glow, opacity: 0.5),
+])
+
+// Hex colors
+let color = UIColor(hex: "A855F7")
+
+// Physics configuration
+let physics = PhysicsConfig.bouncy
+
+// Browse presets
+let styles = StylePresets.all
+let palettes = ColorPalettes.all
+let physicsPresets = PhysicsPresets.all
+```
+
+### SwiftUI Preview
+
+```swift
+StyledAtomView(style: custom, diameter: 80)
+```
+
+### SpriteKit Texture
+
+```swift
+if let texture = AtomTextureGenerator.shared.texture(for: custom) {
+    let sprite = SKSpriteNode(texture: texture, size: CGSize(width: 60, height: 60))
+}
+```
+
+## Package Structure
+
+```
+Sources/AtomKit/
+├── Models/
+│   ├── AtomColor.swift            — 7 predefined colors with hex values
+│   ├── AtomEffect.swift           — glass, gloss, matte, gradient, glow
+│   ├── AtomStyle.swift            — solid or custom styled atoms
+│   ├── EffectLayer.swift          — configurable effect layer with encoding
+│   ├── GlassVariant.swift         — 7 glass visual variants
+│   └── PhysicsConfig.swift        — physics simulation parameters
+├── Extensions/
+│   ├── Color+Hex.swift            — SwiftUI Color from hex
+│   └── UIColor+Hex.swift          — UIColor from hex
+├── Rendering/
+│   ├── AtomTextureGenerator.swift — CGContext rendering → SKTexture
+│   └── StyledAtomView.swift       — SwiftUI preview for any AtomStyle
+└── Presets/                       — contribution zone
+    ├── StylePresets.swift         — named atom styles
+    ├── ColorPalettes.swift        — named color palettes
+    └── PhysicsPresets.swift       — named physics configurations
+```
+
+## Contributing
+
+We welcome contributions! You can add:
+
+- **A style preset** → edit `Sources/AtomKit/Presets/StylePresets.swift`
+- **A color palette** → edit `Sources/AtomKit/Presets/ColorPalettes.swift`
+- **A physics preset** → edit `Sources/AtomKit/Presets/PhysicsPresets.swift`
+
+Each file has a template at the bottom showing exactly what to add.
+
+See the [step-by-step guide](Playground/CONTRIBUTING.md) for detailed instructions.
+
+### Learning Playground
+
+New to Swift? Check out the [Playground](Playground/) — an Xcode Playground that teaches Swift basics through interactive physics.
 
 ## Requirements
 
-- Mac with [Xcode](https://apps.apple.com/app/xcode/id497799835) (free from the App Store)
-- A [GitHub](https://github.com) account
-
----
-
-## Getting Started
-
-### 1. Fork this repository
-
-Click the **Fork** button at the top of this repository page on GitHub.
-
-### 2. Clone to your computer
-
-Open **Terminal** and run:
-
-```bash
-git clone https://github.com/YOUR_USERNAME/CodingIntro.git
-cd CodingIntro
-```
-
-### 3. Open the Playground
-
-```bash
-open CodingIntro.playground
-```
-
-Or double-click `CodingIntro.playground` in Finder.
-
-### 4. Go through the pages in order
-
-| Page | Topic |
-|------|-------|
-| **1 — Hello World** | Variables, data types, functions |
-| **2 — Colors and Shapes** | SpriteKit, shapes, colors |
-| **3 — Ball Physics** | Gravity, bounciness, mass |
-| **4 — Your Challenge** | Add your ball and create a PR! |
-
----
-
-## How to Create a Pull Request
-
-After you've added your ball on page 4:
-
-### 1. Save your changes
-
-```bash
-git add .
-git commit -m "Add ball from [Your Name]"
-```
-
-### 2. Push to GitHub
-
-```bash
-git push origin main
-```
-
-### 3. Create a Pull Request
-
-- Go to your fork on GitHub
-- Click **"Contribute"** → **"Open pull request"**
-- Write a short description and click **"Create pull request"**
-
-Congratulations — you've made your first contribution to an open source project! 🎉
-
----
-
-## Project Structure
-
-```
-CodingIntro/
-├── README.md                          ← You are here
-├── CodingIntro.playground/
-│   ├── Sources/
-│   │   └── BallScene.swift            ← Ball scene code
-│   └── Pages/
-│       ├── 1 - Hello World/           ← Variables and functions
-│       ├── 2 - Colors and Shapes/     ← Drawing shapes
-│       ├── 3 - Ball Physics/          ← Physics and gravity
-│       └── 4 - Your Challenge/        ← Add your ball!
-```
-
----
+- Swift 6.0+
+- iOS 18+ / macOS 15+
 
 ## License
 
-This project is made for educational purposes. Use freely!
+MIT — see [LICENSE](LICENSE) for details.
