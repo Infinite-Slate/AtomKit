@@ -95,7 +95,7 @@ struct YourChallengePage: View {
         """
         scene.addBall(
             emoji: "\(myEmoji)",
-            color: UIColor(hex: "\(myColorHex)"),
+            color: SKColor(hex: "\(myColorHex)"),
             radius: \(Int(myRadius)),
             at: CGPoint(x: \(Int(myX)), y: \(Int(myY)))
         )
@@ -113,7 +113,7 @@ struct YourChallengePage: View {
         // Student's ball
         scene.addBall(
             emoji: myEmoji,
-            color: UIColor(hex: myColorHex),
+            color: SKColor(hex: myColorHex),
             radius: myRadius,
             at: CGPoint(x: myX, y: myY)
         )
@@ -140,7 +140,7 @@ struct YourChallengePage: View {
         } label: {
             HStack(spacing: 6) {
                 Circle()
-                    .fill(Color(UIColor(hex: hex)))
+                    .fill(Color(hex: hex))
                     .frame(width: 16, height: 16)
                 Text(name)
                     .font(.caption)

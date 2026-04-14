@@ -32,7 +32,6 @@ struct HelloWorldPage: View {
                                     .frame(width: 60, alignment: .leading)
                                 TextField("Age", value: $age, format: .number)
                                     .textFieldStyle(.roundedBorder)
-                                    .keyboardType(.numberPad)
                             }
                             HStack {
                                 Text("Emoji:")

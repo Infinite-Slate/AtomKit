@@ -8,14 +8,21 @@ import SpriteKit
 // with different properties. Teaches: physics, for loops, parameters.
 // ============================================================================
 
-struct BallPhysicsPage: View {
-    @State private var gravityY: Double = -9.8
-    @State private var scene: BallPlayground = {
+@MainActor
+class PhysicsSceneHolder: ObservableObject {
+    let scene: BallPlayground
+
+    init() {
         let s = BallPlayground(size: CGSize(width: 400, height: 600))
         s.scaleMode = .aspectFit
         s.physicsWorld.gravity = CGVector(dx: 0, dy: -9.8)
-        return s
-    }()
+        self.scene = s
+    }
+}
+
+struct BallPhysicsPage: View {
+    @State private var gravityY: Double = -9.8
+    @StateObject private var sceneHolder = PhysicsSceneHolder()
 
     @State private var ballEmoji = "⭐️"
     @State private var ballRadius: CGFloat = 30
@@ -25,8 +32,8 @@ struct BallPhysicsPage: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                // SpriteKit view — tap to add balls!
-                SpriteView(scene: scene)
+                // SpriteKit view — tap/click to add balls!
+                SpriteView(scene: sceneHolder.scene)
                     .frame(height: 340)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                     .padding(.horizontal)
@@ -39,7 +46,7 @@ struct BallPhysicsPage: View {
                                 HStack {
                                     Slider(value: $gravityY, in: -25...25, step: 0.1)
                                         .onChange(of: gravityY) { _, newValue in
-                                            scene.physicsWorld.gravity = CGVector(dx: 0, dy: newValue)
+                                            sceneHolder.scene.physicsWorld.gravity = CGVector(dx: 0, dy: newValue)
                                         }
                                     Text(gravityLabel)
                                         .font(.system(.caption, design: .monospaced))
@@ -79,9 +86,9 @@ struct BallPhysicsPage: View {
 
                                 Button {
                                     let x = CGFloat.random(in: 50...350)
-                                    scene.addBall(
+                                    sceneHolder.scene.addBall(
                                         emoji: ballEmoji,
-                                        color: UIColor(hex: ballColorHex),
+                                        color: SKColor(hex: ballColorHex),
                                         radius: ballRadius,
                                         at: CGPoint(x: x, y: 550),
                                         bounciness: ballBounciness
@@ -126,7 +133,7 @@ struct BallPhysicsPage: View {
     private func gravityPreset(_ name: String, _ value: Double) -> some View {
         Button(name) {
             gravityY = value
-            scene.physicsWorld.gravity = CGVector(dx: 0, dy: value)
+            sceneHolder.scene.physicsWorld.gravity = CGVector(dx: 0, dy: value)
         }
         .buttonStyle(.bordered)
     }

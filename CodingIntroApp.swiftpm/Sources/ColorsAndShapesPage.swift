@@ -82,7 +82,7 @@ struct ColorsAndShapesPage: View {
         scene.scaleMode = .aspectFit
 
         let circle = SKShapeNode(circleOfRadius: circleRadius)
-        circle.fillColor = UIColor(hex: circleColorHex)
+        circle.fillColor = SKColor(hex: circleColorHex)
         circle.strokeColor = .white
         circle.lineWidth = 3
         circle.position = CGPoint(x: circleX, y: circleY)

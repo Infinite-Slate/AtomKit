@@ -1,11 +1,10 @@
 import SpriteKit
-import UIKit
 
 // ============================================================================
-// MARK: - UIColor + Hex
+// MARK: - SKColor + Hex
 // ============================================================================
 
-extension UIColor {
+extension SKColor {
     convenience init(hex: String, alpha: CGFloat = 1.0) {
         let clean = hex.hasPrefix("#") ? String(hex.dropFirst()) : hex
         var rgb: UInt64 = 0
@@ -36,7 +35,7 @@ class BallPlayground: SKScene {
 
     func addBall(
         emoji: String,
-        color: UIColor,
+        color: SKColor,
         radius: CGFloat = 30,
         at position: CGPoint,
         bounciness: CGFloat = 0.6
@@ -66,11 +65,8 @@ class BallPlayground: SKScene {
         addChild(ball)
     }
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
-        let location = touch.location(in: self)
-
-        let colors: [UIColor] = [
+    private func spawnRandomBall(at location: CGPoint) {
+        let colors: [SKColor] = [
             .systemRed, .systemBlue, .systemGreen,
             .systemYellow, .systemPurple, .systemOrange,
             .systemPink, .systemTeal
@@ -79,7 +75,6 @@ class BallPlayground: SKScene {
             "⭐️", "🎈", "🎾", "🌍", "🎵", "💎",
             "🚀", "🎯", "🦋", "🌸", "🔮", "🍎"
         ]
-
         addBall(
             emoji: emojis.randomElement()!,
             color: colors.randomElement()!,
@@ -87,4 +82,15 @@ class BallPlayground: SKScene {
             at: location
         )
     }
+
+    #if canImport(UIKit)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        spawnRandomBall(at: touch.location(in: self))
+    }
+    #else
+    override func mouseDown(with event: NSEvent) {
+        spawnRandomBall(at: event.location(in: self))
+    }
+    #endif
 }
